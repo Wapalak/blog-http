@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        dl {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        dt {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        dd {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Blog Post</h1>
+
+<form action="/blog/list" method="GET">
+    <button type="submit">Home Page</button>
+</form>
+
+<dl>
+    <dt></dt>
+    <dd>ID: {{ .ID }}</dd>
+    <dt></dt>
+    <dd>Author: {{ .Author }}</dd>
+    <dt></dt>
+    <dd>Title: {{ .Title }}</dd>
+    <dt></dt>
+    <dd>Text: {{ .Text }}</dd>
+    <dt></dt>
+    <dd>Rating: {{ .Votes }}</dd>
+</dl>
+<form method="POST">
+    <button formaction="/blog/{{.ID}}/delete" type="submit">Delete</button>
+    <button formaction="/blog/{{.ID}}/up" type="submit">Like this blog</button>
+    <button formaction="/blog/{{.ID}}/down" type="submit">Dislike this blog</button>
+</form>
+
+</body>
+</html>

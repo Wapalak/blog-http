@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .blog-block {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .blog-block dt {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .blog-block dd {
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .empty-message {
+            color: #666;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Blog List</h1>
+{{if not .Blogs}}
+<p class="empty-message">Blog list is empty!</p>
+<p class="empty-message">Start your own blog!</p>
+{{else}}
+{{range .Blogs}}
+<div class="blog-block">
+    <dt><strong>{{.Title}}</strong></dt>
+    <dd>Author: {{.Author}}</dd>
+    <dd>Votes: {{.Votes}}</dd>
+    <dd>
+        <a href="/blog/{{.ID}}" class="button">See details</a>
+    </dd>
+</div>
+{{end}}
+{{end}}
+<a href="/blog/new" class="button">Create a new blog post</a>
+
+</body>
+</html>
